@@ -1,9 +1,9 @@
 def even_position(i):
   
-    return i[1::3]
+ return i[::2]
 
-array = [7, 200, 3, 450, 50, 90]
+array = [2, 4, 3, 5, 6, 9]
 
 even = even_position(array)
 
-print(even)
+print(even) 
