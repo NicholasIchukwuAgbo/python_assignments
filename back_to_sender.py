@@ -1,4 +1,6 @@
 total_delivery = int(input("Enter number of successful delivery: "))
+while total_delivery < 0:
+	total_delivery = int(input("invalid, try again: "))
 
 base_pay = 5000
 	
@@ -19,5 +21,5 @@ elif (total_delivery < 69):
 elif (total_delivery >= 70):
 
 	wages = total_delivery * 500 + base_pay
-
-print(wages)
+	
+print("Rider wages: ", wages)

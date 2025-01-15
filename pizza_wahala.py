@@ -1,5 +1,9 @@
 import math
 
+number_of_guests = int(input("Enter number of guests: " ))
+while number_of_guests < 1: 
+	number_of_guests = int(input("invalid, try again: " ))
+
 print("""  
 
 	Pizza Type | Number of Slices | Price Per Box
@@ -15,9 +19,9 @@ print("""
 
      """)
 
-pizza_type = int(input("Enter your choice (1-4): "));
-
-number_of_guests = int(input("Enter number of guests: " ));
+pizza_type = int(input("Enter your choice (1-4): "))
+while pizza_type not in [1,2,3,4]:
+	pizza_type = int(input("invalid input, select between (1-4): "))
 
 slice_per_box = 0
 
