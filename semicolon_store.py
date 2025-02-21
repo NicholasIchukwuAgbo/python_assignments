@@ -9,6 +9,7 @@ price = []
 total = 0
 
 customer_name = input("Customer name?: ")
+	
 while (True):
 	goods_purchase = input("What did the customer buy?: ")
 	items.append(goods_purchase)
