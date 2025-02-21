@@ -16,13 +16,14 @@ while True:
 	print("2. View all expenses")
 	print("3. Calculate total expenses")
 	print("4. Exit")
-
-	try:
-		choice = int(input("\nEnter your choice (1-4): "))
-		if choice < 1 or choice > 4:
-			print("Invalid choice😡, choose between(1 - 4)")
-	except ValueError:
-		print("Invalid input😠. Please enter a number.")
+	
+	while True:
+		try:
+			choice = int(input("\nEnter your choice (1-4): "))
+			if choice < 1 or choice > 4:
+				print("Invalid choice😡, choose between(1 - 4)")
+		except ValueError:
+			print("Invalid input😠. Please enter a number.")
 
 
 	if choice == 1:
