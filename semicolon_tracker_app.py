@@ -19,7 +19,7 @@ def user_choice():
 
 			print("Invalid input. Please enter a number.")
 
-def get_date(date):
+def get_date():
 
 	while True:
 
