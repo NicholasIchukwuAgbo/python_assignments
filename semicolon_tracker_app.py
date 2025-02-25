@@ -1,15 +1,5 @@
 from datetime import datetime
 
-def display_menu():
-
-	print("\n1. Add on expense")
-
-	print("2. View all expenses")
-
-	print("3. Calculate total expenses")
-
-	print("4. Exit")
-
 def user_choice():
 
 	while True:
@@ -29,7 +19,7 @@ def user_choice():
 
 			print("Invalid input. Please enter a number.")
 
-def get_date():
+def get_date(date):
 
 	while True:
 
@@ -79,6 +69,7 @@ def get_amount():
 
 			print("Invalid input, must be a number")
 
+
 def add_expense(date_holder, description_holder, amount_holder):
 
 	date_place_holder = get_date()
@@ -93,11 +84,12 @@ def add_expense(date_holder, description_holder, amount_holder):
 
 	amount_holder.append(amount_place_holder)
 
-	print("\nExpense Added!")
-
 def view_expenses(date_holder, description_holder, amount_holder):
 
 	print("\n:::::Expenses:::::")
+
+	if not date_holder:
+		print("Nothing to display")
 
 	total_expenses = 0
 
@@ -111,13 +103,13 @@ def view_expenses(date_holder, description_holder, amount_holder):
 
 def calculate_total_expenses(total_expenses):
 
-	print(f"\nTotal Expenses: {total_expenses}")
+	return total_expenses
 
 def main():
 
 	print("=========================================")
 	print(" Welcome To Semicolon Tracker App")
-	print("=========================================")
+	print("=========================================\n")
 
 	date_holder = []
 
@@ -129,21 +121,24 @@ def main():
 
 	while True:
 
-		display_menu()
+		print("\n 1. Add on expense. \n 2. View all expenses. \n 3. Calculate total expenses. \n 4. Exit.")
 
 		choice_place_holder = user_choice()
 
 		if choice_place_holder == 1:
 
 			add_expense(date_holder, description_holder, amount_holder)
+			print("\nExpense Added!")
 
 		elif choice_place_holder == 2:
 
-			total_expenses = view_expenses(date_holder, description_holder, amount_holder)
+			view_expenses(date_holder, description_holder, amount_holder)
 
 		elif choice_place_holder == 3:
 
 			calculate_total_expenses(total_expenses)
+
+			print(f"\nTotal Expenses: {total_expenses}")
 
 		elif choice_place_holder == 4:
 
