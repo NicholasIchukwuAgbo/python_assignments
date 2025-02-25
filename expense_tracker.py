@@ -1,24 +1,16 @@
 from datetime import datetime
 
-def user_choice(choice):
-
-	choice = int(input("\nEnter your choice (1-4): "))
-
-	if choice < 1 or choice > 4:
-
-		return false
-
-	else:
-
-		return True 
-
 def get_date(date):
+
 	try:
+
 		datetime.strptime(date, "%d/%m/%Y")
+
 		return True
 
 	except ValueError:
-		return false
+
+		return False
 
 def get_description(description):
 
@@ -28,17 +20,17 @@ def get_description(description):
 
 	else:
 
-		return false
+		return False
 
 def get_amount(amount):
 
 	if amount >= 1:
 
-		eturn True
+		return True
 
 	else:
 
-		return false
+		return False
 
 
 
@@ -53,9 +45,15 @@ def view_expenses(date_holder, description_holder, amount_holder):
 	return total_expenses
 
 
-def calculate_total_expenses(total_expenses):
+def calculate_total_expenses(amount_holder):
 
-	return total_expenses
+	total = 0;
+
+	for counter in range(len(amount_holder)):
+
+		total += amount_holder[counter]
+
+	return total  
 
 
 def main():
@@ -72,33 +70,101 @@ def main():
 
 	total_expenses = 0
 
+	choice = 0
+	
+	count = 0
+
 	while True:
 
 		print("\n 1. Add on expense. \n 2. View all expenses. \n 3. Calculate total expenses. \n 4. Exit.")
 
-		choice_place_holder = user_choice()
+		try:
 
-		if choice_place_holder == 1:
+			choice = int(input("\nEnter your choice (1-4): "))
+	
+			if choice < 1 or  choice > 4:
 
-			add_expense(date_holder, description_holder, amount_holder)
-			print("\nExpense Added!")
+				print("invalid, enter number between 1-4")
+		
+		except ValueError:
 
-		elif choice_place_holder == 2:
+			print("invalid, enter numer")
 
-			view_expenses(date_holder, description_holder, amount_holder)
 
-		elif choice_place_holder == 3:
+		if choice == 1:
 
-			calculate_total_expenses(total_expenses)
+			count += 1
 
-			print(f"\nTotal Expenses: {total_expenses}")
+			while True:
 
-		elif choice_place_holder == 4:
+				date = input("\nEnter the date (DD/MM/YYYY): ")
 
-			print("\nExiting the app. Goodbye!")
+				if get_date(date):
+
+					date_holder.append(date)
+
+					break
+				else:
+					print("invalid date, date format (DD/MM/YYYY)") 
+
+			while True:
+
+				description = input("Enter the description: ")
+
+				if get_description(description):
+
+					description_holder.append(description)
+
+					break
+
+				else:
+					print("Description cannot be empty")
+
+
+			while True:
+
+				try:
+
+					amount = float(input("Enter the amount: "))
+
+					if get_amount(amount):
+
+						amount_holder.append(amount)
+
+						break
+
+					else:
+
+						print("Amount must be greater than or equal to 1")
+
+				except ValueError:
+
+					print("Invalid input, must be a number")
+
+			print("Expense added!")
+
+
+		elif choice == 2:
+
+			print("\n::::Expenses::::\n")
+
+			if count == 0:
+
+				print("No expense record yet..")
+			else:
+				for num in range(len(date_holder)):
+
+					print(f"{num + 1}. Date: {date_holder[num]}, Description: {description_holder[num]}, Amount: {amount_holder[num]}")
+
+		elif choice == 3:
+
+			print(f"\n Total Expenses: {calculate_total_expenses(amount_holder)}")
+
+		elif choice == 4:
+
+			print("\n Exiting the app. Goodbye!")
 
 			break
-
 
 
 if __name__ == "__main__":
